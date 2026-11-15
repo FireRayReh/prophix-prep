@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FP&A Mini</title>
+<style>
+  body { font: 14px system-ui, sans-serif; margin: 2rem auto; max-width: 900px; padding: 0 1rem; }
+  table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+  th, td { padding: .4rem .6rem; border-bottom: 1px solid #ddd; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  .good { color: #137333; } .bad { color: #c5221f; }
+</style>
+</head>
+<body>
+<h1>Budget vs Actual</h1>
+<label>Year <input id="year" type="number" value="2026"></label>
+<label>Through month <input id="to" type="number" min="1" max="12" value="10"></label>
+<button id="go">Run</button>
+<table><thead><tr><th>Account</th><th>Budget</th><th>Actual</th><th>Variance</th><th>%</th></tr></thead>
+<tbody id="rows"></tbody></table>
+<p id="net"></p>
+<script>
+const fmt = n => n.toLocaleString(undefined, { maximumFractionDigits: 0 });
+async function run() {
+  const y = document.getElementById('year').value, to = document.getElementById('to').value;
+  const res = await fetch(`/api/reports/variance?year=${y}&toMonth=${to}`);
+  if (!res.ok) { document.getElementById('net').textContent = 'Error: ' + res.status; return; }
+  const r = await res.json();
+  document.getElementById('rows').innerHTML = r.lines.map(l => `
+    <tr><td>${l.code} ${l.name}</td><td>${fmt(l.budget)}</td><td>${fmt(l.actual)}</td>
+    <td class="${l.favorable ? 'good' : 'bad'}">${fmt(l.variance)}</td>
+    <td>${l.variancePct == null ? '–' : (l.variancePct * 100).toFixed(1) + '%'}</td></tr>`).join('');
+  document.getElementById('net').textContent =
+    `Net income — budget ${fmt(r.netIncomeBudget)}, actual ${fmt(r.netIncomeActual)}`;
+}
+document.getElementById('go').onclick = run; run();
+</script>
+</body>
+</html>
