@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prophix.Tests", "tests\Prophix.Tests\Prophix.Tests.csproj", "{C8399F17-3052-4A72-9236-9BBC4C05BAFD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "review", "review", "{3AF3C6C5-49A4-9431-9BED-3179A0F4DD13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prophix.Review", "review\Prophix.Review.csproj", "{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,18 @@ Global
 		{C8399F17-3052-4A72-9236-9BBC4C05BAFD}.Release|x64.Build.0 = Release|Any CPU
 		{C8399F17-3052-4A72-9236-9BBC4C05BAFD}.Release|x86.ActiveCfg = Release|Any CPU
 		{C8399F17-3052-4A72-9236-9BBC4C05BAFD}.Release|x86.Build.0 = Release|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Debug|x64.Build.0 = Debug|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Debug|x86.Build.0 = Debug|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Release|x64.ActiveCfg = Release|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Release|x64.Build.0 = Release|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Release|x86.ActiveCfg = Release|Any CPU
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,5 +68,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A85B7289-E5A9-49F3-A839-0A2B7A01C929} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{C8399F17-3052-4A72-9236-9BBC4C05BAFD} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{0BFF8416-99B7-41D5-B1E4-90DFBA15A29D} = {3AF3C6C5-49A4-9431-9BED-3179A0F4DD13}
 	EndGlobalSection
 EndGlobal

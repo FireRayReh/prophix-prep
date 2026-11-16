@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Code-review practice. These files compile but contain deliberate problems.
+       Do NOT copy patterns from here. Answers: review/ANSWERS.md -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);CS1998;CS4014;CS0168;CA2016;CS8618;CS8602;CS8603;CS8600;CS0414</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="..\src\Prophix.Api\Prophix.Api.csproj" />
+  </ItemGroup>
+</Project>

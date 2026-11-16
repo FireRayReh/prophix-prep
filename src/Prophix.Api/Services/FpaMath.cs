@@ -23,4 +23,28 @@ public static class FpaMath
         ArgumentOutOfRangeException.ThrowIfGreaterThan(monthsClosed, periodsInYear);
         return Math.Round(ytdActual / monthsClosed * periodsInYear, 2);
     }
+
+    /// Allocate a shared cost (e.g. rent) across departments by driver (e.g. headcount).
+    /// Classic trap: naive rounding makes the parts not add up to the total.
+    /// Largest-remainder method: floor each share to the cent, then hand leftover cents
+    /// to the largest fractional remainders. Result always sums exactly to `total`.
+    public static decimal[] Allocate(decimal total, IReadOnlyList<decimal> drivers)
+    {
+        ArgumentOutOfRangeException.ThrowIfZero(drivers.Count);
+        if (total < 0) return Allocate(-total, drivers).Select(x => -x).ToArray(); // credits: allocate magnitude, flip sign
+        if (drivers.Any(d => d < 0)) throw new ArgumentException("Drivers must be non-negative.", nameof(drivers));
+        var driverSum = drivers.Sum();
+        if (driverSum == 0) throw new ArgumentException("Drivers must not all be zero.", nameof(drivers));
+
+        var exact = drivers.Select(d => total * d / driverSum).ToArray();
+        var result = exact.Select(e => Math.Floor(e * 100) / 100).ToArray();
+        var leftoverCents = (int)Math.Round((total - result.Sum()) * 100);
+
+        foreach (var i in Enumerable.Range(0, exact.Length)
+                     .OrderByDescending(i => exact[i] - result[i]).ThenBy(i => i)
+                     .Take(leftoverCents))
+            result[i] += 0.01m;
+
+        return result;
+    }
 }

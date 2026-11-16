@@ -47,4 +47,9 @@ HTTP pipeline and EF Core through `WebApplicationFactory`.
 | `tests/` | xUnit `[Theory]`, `IClassFixture`, `WebApplicationFactory` |
 | `Dockerfile`, `docker-compose.yml`, `.github/workflows/ci.yml` | Multi-stage build, Postgres, CI |
 
-See [PREP.md](PREP.md) for practice drills and likely interview questions.
+## Interview prep
+
+Start with **[PREP.md](PREP.md)**. It's organised by the three interview rounds.
+
+- `review/Scenarios/` has C# files with planted problems for code-review practice (they compile, so you can open them in an IDE). Answers are in `review/ANSWERS.md`.
+- `FpaMath.Allocate` is a worked example of a 25-minute build problem.

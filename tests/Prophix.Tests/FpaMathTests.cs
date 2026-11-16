@@ -36,3 +36,22 @@ public class FpaMathTests
     public void RunRate_Rejects_Invalid_Months(int months)
         => Assert.Throws<ArgumentOutOfRangeException>(() => FpaMath.RunRateForecast(100, months));
 }
+
+public class AllocationTests
+{
+    [Fact]
+    public void Allocation_Always_Sums_To_Total()
+    {
+        var parts = FpaMath.Allocate(100m, [1, 1, 1]);        // 33.33 x3 = 99.99 naively
+        Assert.Equal(100m, parts.Sum());
+        Assert.Equal([33.34m, 33.33m, 33.33m], parts);
+    }
+
+    [Fact]
+    public void Allocation_Is_Proportional_To_Drivers()
+        => Assert.Equal([2500m, 7500m], FpaMath.Allocate(10_000m, [10, 30]));
+
+    [Fact]
+    public void Allocation_Rejects_All_Zero_Drivers()
+        => Assert.Throws<ArgumentException>(() => FpaMath.Allocate(100m, [0, 0]));
+}
